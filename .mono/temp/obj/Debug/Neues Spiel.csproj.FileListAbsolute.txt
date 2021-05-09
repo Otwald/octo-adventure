@@ -1,0 +1,8 @@
+D:\GoDot\Neues Spiel\.mono\temp\bin\Debug\Neues Spiel.dll
+D:\GoDot\Neues Spiel\.mono\temp\bin\Debug\Neues Spiel.pdb
+D:\GoDot\Neues Spiel\.mono\temp\obj\Debug\Neues Spiel.csprojAssemblyReference.cache
+D:\GoDot\Neues Spiel\.mono\temp\obj\Debug\Neues Spiel.AssemblyInfoInputs.cache
+D:\GoDot\Neues Spiel\.mono\temp\obj\Debug\Neues Spiel.AssemblyInfo.cs
+D:\GoDot\Neues Spiel\.mono\temp\obj\Debug\Neues Spiel.csproj.CoreCompileInputs.cache
+D:\GoDot\Neues Spiel\.mono\temp\obj\Debug\Neues Spiel.dll
+D:\GoDot\Neues Spiel\.mono\temp\obj\Debug\Neues Spiel.pdb
