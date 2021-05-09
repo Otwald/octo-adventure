@@ -8,6 +8,8 @@ public class StateMaschine : Node
     State currentState = null;
 
     Dictionary<string, State> stateMap = null;
+
+    public KinematicBody2D parent = null;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -17,6 +19,7 @@ public class StateMaschine : Node
             {"walk", GetNode("Walk") as State}
         };
         currentState = GetNode("Idle") as State;
+        parent = GetParent<KinematicBody2D>();
     }
 
     public void ChangeState(string stateName)
@@ -25,7 +28,7 @@ public class StateMaschine : Node
         {
             GD.Print("State change to :" + stateName);
         }
-        currentState.Exit();
+        currentState.Exit(this);
         if (stateName == "previous")
         {
             statesStack.RemoveAt(0);
@@ -35,13 +38,13 @@ public class StateMaschine : Node
             statesStack.Add(stateMap[stateName]);
         }
         currentState = statesStack[0];
-        currentState.Enter();
+        currentState.Enter(this);
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
     {
-        string stateName = currentState.UpdateProcess(delta);
+        string stateName = currentState.UpdateProcess(this, delta);
         if (!stateName.Empty())
         {
             this.ChangeState(stateName);

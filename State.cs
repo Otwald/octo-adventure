@@ -3,14 +3,12 @@ using System;
 
 public abstract class State : Node
 {
-    public void Enter()
+    public void Enter(StateMaschine sM)
     {
-
     }
 
-    public abstract string UpdateProcess(float delta);
-    public void Exit()
+    public abstract string UpdateProcess(StateMaschine sM, float delta);
+    public void Exit(StateMaschine sM)
     {
-
     }
 }
