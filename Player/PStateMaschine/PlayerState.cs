@@ -9,9 +9,22 @@ public abstract class PlayerState : State
     public Vector2 GetInput()
     {
         Vector2 dir = new Vector2(0, 0);
-        dir.x = Convert.ToUInt16(Input.IsActionJustPressed("ui_right")) - Convert.ToInt16(Input.IsActionPressed("ui_left"));
-        dir.y = Convert.ToUInt16(Input.IsActionJustPressed("ui_down")) - Convert.ToInt16(Input.IsActionPressed("ui_up"));
-        GD.Print(dir);
+        if (Input.IsActionPressed("ui_right"))
+        {
+            dir.x += speed;
+        }
+        if (Input.IsActionPressed("ui_left"))
+        {
+            dir.x -= speed;
+        }
+        if (Input.IsActionPressed("ui_up"))
+        {
+            dir.y -= speed;
+        }
+        if (Input.IsActionPressed("ui_down"))
+        {
+            dir.y += speed;
+        }
         return dir.Normalized();
     }
 }
