@@ -4,6 +4,9 @@
 [ext_resource path="res://Player/Player.cs" type="Script" id=2]
 [ext_resource path="res://Player/PStateMaschine/StateMaschine.tscn" type="PackedScene" id=3]
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 31.8975, 32.174 )
+
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 1 ) ],
@@ -12,16 +15,20 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 31.8975, 32.174 )
-
 [node name="Player" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource( 2 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
 
 [node name="PSM" parent="." instance=ExtResource( 3 )]
+
+[node name="RationHelper" type="Node2D" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="RationHelper"]
+frames = SubResource( 1 )
+
+[node name="RayCast2D" type="RayCast2D" parent="RationHelper"]
+collision_mask = 4

@@ -5,7 +5,11 @@ public abstract class PlayerState : State
 {
     [Export] public int speed = 500;
     public Vector2 velocity = new Vector2();
-    Node player;
+    protected Player Player;
+    public override void _Ready()
+    {
+        Player = GetParent().GetParent<Player>();
+    }
     public Vector2 GetInput()
     {
         Vector2 dir = new Vector2(0, 0);
@@ -26,5 +30,14 @@ public abstract class PlayerState : State
             dir.y += speed;
         }
         return dir.Normalized();
+    }
+
+    public bool GetInteractInput()
+    {
+        if (Input.IsActionJustPressed("ui_select"))
+        {
+            return true;
+        }
+        return false;
     }
 }

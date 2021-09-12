@@ -16,7 +16,7 @@ public class StateMaschine : Node
         {
             {"idle" , GetNode("Idle") as State},
             {"walk", GetNode("Walk") as State},
-            {"talk", GetNode("Talk") as State}
+            {"interact", GetNode("Interact") as State}
         };
         currentState = GetNode("Idle") as State;
         this.statesStack.Push(currentState);
