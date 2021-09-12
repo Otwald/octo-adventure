@@ -4,22 +4,24 @@ using System.Collections.Generic;
 public class StateMaschine : Node
 {
     const bool DEBUG = true;
-    List<State> statesStack = new List<State>();
+    Stack<State> statesStack = new Stack<State>();
     State currentState = null;
-
     Dictionary<string, State> stateMap = null;
 
-    public KinematicBody2D parent = null;
+    public Player player = null;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         this.stateMap = new Dictionary<string, State>
         {
             {"idle" , GetNode("Idle") as State},
-            {"walk", GetNode("Walk") as State}
+            {"walk", GetNode("Walk") as State},
+            {"talk", GetNode("Talk") as State}
         };
         currentState = GetNode("Idle") as State;
-        parent = GetParent<KinematicBody2D>();
+        this.statesStack.Push(currentState);
+        // this.ChangeState("Idle");
+        player = GetParent<Player>();
     }
 
     public void ChangeState(string stateName)
@@ -28,21 +30,21 @@ public class StateMaschine : Node
         {
             GD.Print("State change to :" + stateName);
         }
-        currentState.Exit(this);
+        this.currentState.Exit(this);
         if (stateName == "previous")
         {
-            statesStack.RemoveAt(0);
+            this.statesStack.Pop();
         }
         else
         {
-            statesStack.Add(stateMap[stateName]);
+            this.statesStack.Push(stateMap[stateName]);
         }
-        currentState = statesStack[0];
-        currentState.Enter(this);
+        this.currentState = statesStack.Peek();
+        this.currentState.Enter(this);
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(float delta)
+    public override void _PhysicsProcess(float delta)
     {
         string stateName = currentState.UpdateProcess(this, delta);
         if (!stateName.Empty())
