@@ -17,12 +17,22 @@ public class Interact : PlayerState
     public override string UpdateProcess(StateMaschine sM, float delta)
     {
         if (!talkDist.IsColliding()) { return "previous"; }
-        PhysicsBody2D body = talkDist.GetCollider() as PhysicsBody2D;
-        GD.Print(body);
+        this.initInteract(talkDist.GetCollider());
         return null;
     }
     public override void Exit(StateMaschine sM)
     {
         talkDist.Enabled = false;
+    }
+
+    ///<summary>Checks first with what the Player is interacting and then emits Signal to init Dialog System</summary>
+    private void initInteract(Godot.Object body)
+    {
+        if (body is StaticBody2D)
+        {
+        }
+        else if (body is KinematicBody2D)
+        {
+        }
     }
 }

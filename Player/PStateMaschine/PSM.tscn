@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://StateMaschine.cs" type="Script" id=1]
+[ext_resource path="res://Player/PStateMaschine/PSM.cs" type="Script" id=1]
 [ext_resource path="res://Player/PStateMaschine/Walk.cs" type="Script" id=2]
 [ext_resource path="res://Player/PStateMaschine/Idle.cs" type="Script" id=3]
 [ext_resource path="res://Player/PStateMaschine/Interact.cs" type="Script" id=4]
