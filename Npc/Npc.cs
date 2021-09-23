@@ -1,34 +1,20 @@
 using Godot;
 using System;
 
-public class Npc : KinematicBody2D
+namespace NPC
 {
 
-    [Export] public float talkDistance = 100;
-    [Signal] public delegate void NpcTalk();
-    Player.Player player = null;
-
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+    public class Npc : KinematicBody2D
     {
-        player = GetParent().GetNode<Player.Player>("Player");
-        Connect(nameof(NpcTalk), player, nameof(player.NpcReach));
+        [Signal] public delegate void NpcTalk();
 
-    }
+        public Vector2 target;
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(float delta)
-    {
-        float disctance = this.GlobalPosition.DistanceTo(player.GlobalPosition);
-        if (disctance < talkDistance)
+        public const int MAX_SPEED = 50;
+
+        // Called when the node enters the scene tree for the first time.
+        public override void _Ready()
         {
-            EmitSignal(nameof(NpcTalk), this, disctance);
         }
-
-    }
-
-    public void Talk()
-    {
-
     }
 }
