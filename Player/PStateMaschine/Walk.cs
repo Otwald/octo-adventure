@@ -1,17 +1,20 @@
 using Godot;
 using System;
 
-public class Walk : PlayerState
+namespace Player
 {
-    public override string UpdateProcess(StateMaschine sM, float delta)
+    public class Walk : PlayerState
     {
-        if (this.GetInteractInput()) { return "interact"; }
-        this.velocity = this.GetInput();
-        if (this.velocity == new Vector2(0, 0)) { return "previous"; }
-        Node2D rotHelp = this.player.GetNode("RotationHelper") as Node2D;
-        rotHelp.Rotation = this.velocity.Angle();
-        this.velocity = this.velocity * Player.MAX_SPEED;
-        this.velocity = player.MoveAndSlide(this.velocity);
-        return null;
+        public override string UpdateProcess(StateMaschine sM, float delta)
+        {
+            if (this.GetInteractInput()) { return "interact"; }
+            this.velocity = this.GetInput();
+            if (this.velocity == new Vector2(0, 0)) { return "previous"; }
+            Node2D rotHelp = this.player.GetNode("RotationHelper") as Node2D;
+            rotHelp.Rotation = this.velocity.Angle();
+            this.velocity = this.velocity * Player.MAX_SPEED;
+            this.velocity = player.MoveAndSlide(this.velocity);
+            return null;
+        }
     }
 }

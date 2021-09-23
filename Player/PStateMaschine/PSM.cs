@@ -1,21 +1,24 @@
 using Godot;
 using System;
 
-public class PSM : StateMaschine
+namespace Player
 {
-    public Player player = null;
-
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+    public class PSM : StateMaschine
     {
-        base._Ready();
-        this.stateMap.Add("interact", GetNode("Interact") as State);
-        this.player = GetParent<Player>();
-    }
+        public Player player = null;
 
-    //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-    //  public override void _Process(float delta)
-    //  {
-    //      
-    //  }
+        // Called when the node enters the scene tree for the first time.
+        public override void _Ready()
+        {
+            base._Ready();
+            this.stateMap.Add("interact", GetNode("Interact") as State);
+            this.player = GetParent<Player>();
+        }
+
+        //  // Called every frame. 'delta' is the elapsed time since the previous frame.
+        //  public override void _Process(float delta)
+        //  {
+        //      
+        //  }
+    }
 }

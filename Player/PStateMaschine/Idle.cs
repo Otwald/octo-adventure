@@ -1,19 +1,22 @@
 using Godot;
 using System;
 
-public class Idle : PlayerState
+namespace Player
 {
-    public override string UpdateProcess(StateMaschine sM, float delta)
+    public class Idle : PlayerState
     {
-        if (this.GetInteractInput()) { return "interact"; }
-        this.velocity = this.GetInput();
-        if (this.velocity != new Vector2(0, 0)) { return "walk"; }
-        return null;
-    }
+        public override string UpdateProcess(StateMaschine sM, float delta)
+        {
+            if (this.GetInteractInput()) { return "interact"; }
+            this.velocity = this.GetInput();
+            if (this.velocity != new Vector2(0, 0)) { return "walk"; }
+            return null;
+        }
 
-    //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-    //  public override void _Process(float delta)
-    //  {
-    //      
-    //  }
+        //  // Called every frame. 'delta' is the elapsed time since the previous frame.
+        //  public override void _Process(float delta)
+        //  {
+        //      
+        //  }
+    }
 }

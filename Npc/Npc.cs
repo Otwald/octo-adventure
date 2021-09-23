@@ -6,12 +6,12 @@ public class Npc : KinematicBody2D
 
     [Export] public float talkDistance = 100;
     [Signal] public delegate void NpcTalk();
-    Player player = null;
+    Player.Player player = null;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        player = GetParent().GetNode<Player>("Player");
+        player = GetParent().GetNode<Player.Player>("Player");
         Connect(nameof(NpcTalk), player, nameof(player.NpcReach));
 
     }
