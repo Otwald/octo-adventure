@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Npc/Npc.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Object/Object.tscn" type="PackedScene" id=3]
 
 [node name="_Root" type="Node"]
 
@@ -10,3 +11,6 @@ position = Vector2( 209.774, 146.206 )
 
 [node name="Npc" parent="." instance=ExtResource( 2 )]
 position = Vector2( 547.301, 281.429 )
+
+[node name="Object" parent="." instance=ExtResource( 3 )]
+position = Vector2( 149.907, 461.034 )

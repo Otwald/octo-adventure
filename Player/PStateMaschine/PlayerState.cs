@@ -5,10 +5,10 @@ public abstract class PlayerState : State
 {
     [Export] public int speed = 500;
     public Vector2 velocity = new Vector2();
-    protected Player Player;
+    protected Player player;
     public override void _Ready()
     {
-        Player = GetParent().GetParent<Player>();
+        player = GetParent().GetParent<Player>();
     }
     public Vector2 GetInput()
     {

@@ -8,10 +8,10 @@ public class Walk : PlayerState
         if (this.GetInteractInput()) { return "interact"; }
         this.velocity = this.GetInput();
         if (this.velocity == new Vector2(0, 0)) { return "previous"; }
-        Node2D rotHelp = this.Player.GetNode("RationHelper") as Node2D;
+        Node2D rotHelp = this.player.GetNode("RotationHelper") as Node2D;
         rotHelp.Rotation = this.velocity.Angle();
         this.velocity = this.velocity * Player.MAX_SPEED;
-        this.velocity = Player.MoveAndSlide(this.velocity);
+        this.velocity = player.MoveAndSlide(this.velocity);
         return null;
     }
 }
